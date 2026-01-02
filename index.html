@@ -1,1 +1,68 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Habit Tracker</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  background:#0f172a;
+  color:white;
+  font-family:Arial;
+  padding:20px;
+}
+h1 { text-align:center; }
+
+.habit {
+  background:#1e293b;
+  padding:15px;
+  border-radius:10px;
+  margin-bottom:10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+button {
+  background:#22c55e;
+  border:none;
+  padding:8px 14px;
+  border-radius:6px;
+  font-weight:bold;
+}
+
+.done {
+  background:#64748b !important;
+}
+</style>
+</head>
+
+<body>
+
+<h1>My Habit Tracker</h1>
+
+<div class="habit">
+  <span>Wake up early</span>
+  <button onclick="toggle(this)">Done</button>
+</div>
+
+<div class="habit">
+  <span>Drink Water</span>
+  <button onclick="toggle(this)">Done</button>
+</div>
+
+<div class="habit">
+  <span>Workout</span>
+  <button onclick="toggle(this)">Done</button>
+</div>
+
+<script>
+function toggle(btn){
+  btn.classList.toggle("done");
+}
+</script>
+
+</body>
+</html>

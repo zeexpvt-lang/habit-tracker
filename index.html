@@ -1,29 +1,43 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fit Pro – Login</title>
+  <title>Fit Pro – Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- CSS -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="login-container">
-    <div class="login-card">
-      <h1 class="app-name">Fit Pro</h1>
-      <p class="tagline">Train • Track • Transform</p>
 
-      <form id="loginForm">
-        <input type="text" placeholder="Username" required />
-        <input type="password" placeholder="Password" required />
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">Fit Pro</div>
 
-        <button type="submit">Login</button>
-      </form>
+    <nav class="menu">
+      <a class="active">Dashboard</a>
+      <a>Daily Habits</a>
+      <a>Growth</a>
+      <a>Expenses</a>
+      <a>Before / After</a>
+      <a>Export</a>
+      <a>Settings</a>
+    </nav>
+  </aside>
 
-      <p class="note">Your fitness journey starts here</p>
-    </div>
-  </div>
+  <!-- Main Content -->
+  <main class="main">
+    <header class="topbar">
+      <h1>Dashboard</h1>
+      <div class="user">👤 User</div>
+    </header>
 
-  <script src="js/app.js"></script>
+    <section class="content">
+      <div class="card">Overview (empty)</div>
+      <div class="card">Daily Progress (empty)</div>
+      <div class="card">Monthly Summary (empty)</div>
+    </section>
+  </main>
+
 </body>
 </html>

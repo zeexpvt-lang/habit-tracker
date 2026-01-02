@@ -1,73 +1,56 @@
+/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+/* ===== BODY ===== */
 body {
-  display: flex;
-  height: 100vh;
-  background: #0f172a;
-  color: #e5e7eb;
+  background: linear-gradient(180deg, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+  min-height: 100vh;
 }
 
-/* Sidebar */
-.sidebar {
-  width: 220px;
-  background: #020617;
-  padding: 20px;
+/* ===== HEADER ===== */
+.header {
+  padding: 16px;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
 }
 
-.logo {
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 30px;
-}
-
-.menu a {
-  display: block;
-  padding: 10px;
-  margin-bottom: 8px;
-  color: #cbd5f5;
-  text-decoration: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.menu a.active,
-.menu a:hover {
-  background: #22c55e;
-  color: #022c22;
-}
-
-/* Main */
-.main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.topbar {
-  height: 60px;
-  background: #020617;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-  border-bottom: 1px solid #1e293b;
-}
-
-.content {
-  padding: 20px;
+/* ===== DASHBOARD LAYOUT ===== */
+.dashboard {
+  padding: 16px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  grid-template-columns: 1fr;
+  gap: 16px;
 }
 
+/* ===== CARD ===== */
 .card {
-  background: #020617;
-  padding: 20px;
-  border-radius: 12px;
-  min-height: 120px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.card h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+
+.card p {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* ===== DESKTOP (later use) ===== */
+@media (min-width: 768px) {
+  .dashboard {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

@@ -22,10 +22,26 @@
     <p>(empty)</p>
   </div>
 
-  <div class="card page" id="habits">
-    <h3>📊 Daily Progress</h3>
-    <p>(empty)</p>
-  </div>
+ <div class="card page" id="expense">
+  <h3>💰 Monthly Expenses</h3>
+
+  <table class="expense-table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Amount</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody id="expense-body">
+      <!-- JS la rows varum -->
+    </tbody>
+  </table>
+
+  <button class="add-expense-btn">➕ Add Expense</button>
+</div>
+
 
   <div class="card page" id="growth">
     <h3>📅 Monthly Summary</h3>

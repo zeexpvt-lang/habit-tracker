@@ -1,6 +1,8 @@
 // all pages
 const pages = document.querySelectorAll(".page");
 
+});
+
 // hide all pages
 function hideAllPages() {
   pages.forEach(page => {
@@ -37,27 +39,38 @@ document.getElementById("nav-expense").addEventListener("click", () => {
 document.getElementById("nav-export").addEventListener("click", () => {
   alert("Export feature – next step 😄");
 });
-// demo expense data
-const expenses = [
-  { date: "2026-01-01", category: "Food", amount: 250, type: "Need" },
-  { date: "2026-01-02", category: "Gym", amount: 500, type: "Need" },
-  { date: "2026-01-03", category: "Shopping", amount: 1200, type: "Want" }
-];
-
+// ===== ADD EXPENSE LOGIC =====
+const addBtn = document.querySelector(".add-btn");
 const expenseBody = document.getElementById("expense-body");
 
-function renderExpenses() {
-  expenseBody.innerHTML = "";
-  expenses.forEach(exp => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
-      <td>${exp.date}</td>
-      <td>${exp.category}</td>
-      <td>₹${exp.amount}</td>
-      <td>${exp.type}</td>
-    `;
-    expenseBody.appendChild(row);
-  });
-}
+addBtn.addEventListener("click", () => {
+  const inputs = document.querySelectorAll(".expense-form input");
+  const select = document.querySelector(".expense-form select");
 
-renderExpenses();
+  const date = inputs[0].value;
+  const category = inputs[1].value;
+  const amount = inputs[2].value;
+  const note = inputs[3].value;
+  const type = select.value;
+
+  if (!date || !category || !amount) {
+    alert("Date, Category, Amount fill pannunga");
+    return;
+  }
+
+  const row = document.createElement("tr");
+  row.innerHTML = `
+    <td>${date}</td>
+    <td>${category}</td>
+    <td>₹${amount}</td>
+    <td>${type}</td>
+    <td>${note}</td>
+  `;
+
+  expenseBody.appendChild(row);
+
+  // clear form
+  inputs.forEach(i => i.value = "");
+});
+
+

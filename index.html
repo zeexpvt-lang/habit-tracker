@@ -14,27 +14,69 @@
     Fit Pro – Dashboard
   </div>
 
-  <!-- DASHBOARD -->
-  <div class="dashboard">
+ <!-- DASHBOARD -->
+<div class="dashboard">
 
+  <!-- HOME -->
   <div class="card page" id="home">
     <h3>👤 User Overview</h3>
     <p>(empty)</p>
   </div>
 
- <div class="card page" id="expense">
-  <h3>💰 Monthly Expenses</h3>
+  <!-- HABITS -->
+  <div class="card page" id="habits">
+    <h3>✅ Daily Habits</h3>
+    <p>(empty)</p>
+  </div>
 
-  <table class="expense-table">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Category</th>
-        <th>Amount</th>
-        <th>Type</th>
-      </tr>
-    </thead>
-    <tbody id="expense-body">
+  <!-- GROWTH -->
+  <div class="card page" id="growth">
+    <h3>📈 Monthly Summary</h3>
+    <p>(empty)</p>
+  </div>
+
+  <!-- EXPENSES -->
+  <div class="card page" id="expense">
+    <h3>💰 Expenses</h3>
+
+    <!-- ADD EXPENSE FORM (Step-2) -->
+    <div class="expense-form">
+      <h4>➕ Add Expense</h4>
+
+      <input type="date">
+      <input type="text" placeholder="Category (Food, Travel)">
+      <input type="number" placeholder="Amount ₹">
+
+      <select>
+        <option>Need</option>
+        <option>Want</option>
+        <option>Save</option>
+      </select>
+
+      <input type="text" placeholder="Note (optional)">
+
+      <button class="add-btn">Add Expense</button>
+    </div>
+
+    <!-- EXPENSE TABLE -->
+    <table class="expense-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Category</th>
+          <th>Amount</th>
+          <th>Type</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody id="expense-body">
+        <!-- JS will add rows -->
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
       <!-- JS la rows varum -->
     </tbody>
   </table>

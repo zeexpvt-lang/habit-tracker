@@ -1,8 +1,6 @@
 // all pages
 const pages = document.querySelectorAll(".page");
 
-});
-
 // hide all pages
 function hideAllPages() {
   pages.forEach(page => {

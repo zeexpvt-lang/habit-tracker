@@ -6,87 +6,106 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-  <!-- HEADER -->
   <div class="header">
-    Fit Pro – Dashboard
+    <span class="logo">Fit Pro</span>
+    <span class="header-date" id="header-date"></span>
   </div>
 
-<!-- DASHBOARD -->
-<div class="dashboard">
+  <div class="dashboard">
 
-  <!-- HOME -->
-  <div class="card page" id="home">
-    <h3>👤 User Overview</h3>
-    <p>(empty)</p>
-  </div>
-
-  <!-- HABITS -->
-  <div class="card page" id="habits">
-    <h3>✅ Daily Habits</h3>
-    <p>(empty)</p>
-  </div>
-
-  <!-- GROWTH -->
-  <div class="card page" id="growth">
-    <h3>📈 Monthly Summary</h3>
-    <p>(empty)</p>
-  </div>
-
-  <!-- EXPENSES -->
-  <div class="card page" id="expense">
-    <h3>💰 Expenses</h3>
-
-    <!-- ADD EXPENSE FORM -->
-    <div class="expense-form">
-      <h4>➕ Add Expense</h4>
-
-      <input type="date">
-      <input type="text" placeholder="Category (Food, Travel)">
-      <input type="number" placeholder="Amount ₹">
-
-      <select>
-        <option>Need</option>
-        <option>Want</option>
-        <option>Save</option>
-      </select>
-
-      <input type="text" placeholder="Note (optional)">
-
-      <button class="add-btn">Add Expense</button>
+    <!-- HOME -->
+    <div class="page" id="home">
+      <div class="user-card">
+        <div class="user-avatar" id="user-initials">FP</div>
+        <div class="user-info">
+          <div class="user-name" id="user-name-display">Welcome back!</div>
+          <div class="user-sub">Here's your overview</div>
+        </div>
+      </div>
+      <div class="metric-row">
+        <div class="metric"><div class="metric-label">Habits today</div><div class="metric-value" id="ov-today">0/0</div></div>
+        <div class="metric"><div class="metric-label">This month</div><div class="metric-value" id="ov-month">₹0</div></div>
+        <div class="metric"><div class="metric-label">Streak avg</div><div class="metric-value" id="ov-streak">0%</div></div>
+      </div>
+      <div class="section-title" style="margin-top:1.25rem;">Today's habits</div>
+      <div id="home-habits-list"></div>
     </div>
 
-    <!-- EXPENSE TABLE -->
-    <table class="expense-table">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Category</th>
-          <th>Amount</th>
-          <th>Type</th>
-          <th>Note</th>
-        </tr>
-      </thead>
-      <tbody id="expense-body">
-        <!-- JS will add rows -->
-      </tbody>
-    </table>
+    <!-- HABITS -->
+    <div class="page" id="habits">
+      <div class="section-title">Add habit</div>
+      <div class="form-row">
+        <input type="text" id="habit-input" placeholder="e.g. Drink 8 glasses of water" />
+        <button class="btn-green" onclick="addHabit()">Add</button>
+      </div>
+      <div id="habit-manage-list" style="margin-bottom:1.25rem;"></div>
+
+      <div class="section-title">Monthly calendar</div>
+      <div class="month-nav">
+        <button class="btn-ghost" onclick="changeMonth(-1)">&#8592;</button>
+        <span id="cal-month-label" class="month-label"></span>
+        <button class="btn-ghost" onclick="changeMonth(1)">&#8594;</button>
+      </div>
+      <div id="cal-container" style="overflow-x:auto;"></div>
+    </div>
+
+    <!-- GROWTH -->
+    <div class="page" id="growth">
+      <div class="section-title">Expense by category</div>
+      <div id="growth-exp-bars"></div>
+      <div class="section-title" style="margin-top:1.5rem;">Habit completion</div>
+      <div id="growth-habit-bars"></div>
+      <div class="section-title" style="margin-top:1.5rem;">Monthly spend</div>
+      <div id="growth-monthly"></div>
+    </div>
+
+    <!-- EXPENSES -->
+    <div class="page" id="expense">
+      <div class="section-title">Add expense</div>
+      <div class="expense-form">
+        <input type="date" id="exp-date" />
+        <input type="text" id="exp-cat" placeholder="Category (Food, Travel…)" />
+        <input type="number" id="exp-amt" placeholder="Amount ₹" min="0" />
+        <select id="exp-type">
+          <option>Need</option>
+          <option>Want</option>
+          <option>Save</option>
+        </select>
+        <input type="text" id="exp-note" placeholder="Note (optional)" />
+        <button class="btn-green full-width" onclick="addExpense()">Add Expense</button>
+      </div>
+
+      <div class="metric-row" style="margin-top:1rem;">
+        <div class="metric"><div class="metric-label">Total entries</div><div class="metric-value" id="exp-count">0</div></div>
+        <div class="metric"><div class="metric-label">This month</div><div class="metric-value" id="exp-this-month">₹0</div></div>
+        <div class="metric"><div class="metric-label">Top type</div><div class="metric-value" id="exp-top-type" style="font-size:14px;">—</div></div>
+      </div>
+
+      <div class="section-title" style="margin-top:1rem;">Expense log</div>
+      <div style="overflow-x:auto;">
+        <table class="expense-table">
+          <thead>
+            <tr><th>Date</th><th>Category</th><th>Amount</th><th>Type</th><th>Note</th><th></th></tr>
+          </thead>
+          <tbody id="expense-body"></tbody>
+        </table>
+      </div>
+    </div>
+
   </div>
 
-</div>
-
   <!-- BOTTOM NAV -->
- <div class="bottom-nav">
-  <button id="nav-home">🏠</button>
-  <button id="nav-habits">✅</button>
-  <button id="nav-growth">📈</button>
-  <button id="nav-expense">💰</button>
-  <button id="nav-export">⬇️</button>
-</div>
+  <div class="bottom-nav">
+    <button id="nav-home" class="nav-btn active" onclick="showPage('home',this)">🏠<span>Home</span></button>
+    <button id="nav-habits" class="nav-btn" onclick="showPage('habits',this)">✅<span>Habits</span></button>
+    <button id="nav-growth" class="nav-btn" onclick="showPage('growth',this)">📈<span>Summary</span></button>
+    <button id="nav-expense" class="nav-btn" onclick="showPage('expense',this)">💰<span>Expenses</span></button>
+    <button id="nav-export" class="nav-btn" onclick="exportExcel()">⬇️<span>Export</span></button>
+  </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   <script src="js/app.js"></script>
-
 </body>
 </html>
